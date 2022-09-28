@@ -1,0 +1,763 @@
+{
+	"info": {
+		"_postman_id": "b2b92b36-b123-4481-b807-9bbefbc0cae4",
+		"name": "SimpleKart E-commerce API Testing Demo",
+		"description": "API for an imaginary E-Commerce store to demonstrate API Builder capabilities in Postman\n\nContact Support:\n Name: Postman Team\n Email: simplekart@postman.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "17891466-b2b92b36-b123-4481-b807-9bbefbc0cae4"
+	},
+	"item": [
+		{
+			"name": "items",
+			"item": [
+				{
+					"name": "{item Id}",
+					"item": [
+						{
+							"name": "Get item from the database",
+							"id": "a7a2be10-d7dd-47b1-af91-ece02fdef27c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/items/:itemId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"items",
+										":itemId"
+									],
+									"variable": [
+										{
+											"key": "itemId",
+											"value": "1657",
+											"description": "(Required) Id of the item to pull details of"
+										}
+									]
+								},
+								"description": "Obtain item details from item database"
+							},
+							"response": [
+								{
+									"id": "555ce495-166c-435b-ae4f-a388d8349ce3",
+									"name": "OK - Successfully obtained order details",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/items/:itemId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"items",
+												":itemId"
+											],
+											"variable": [
+												{
+													"key": "itemId",
+													"value": "1657",
+													"description": "(Required) Id of the item to pull details of"
+												}
+											]
+										},
+										"description": "Obtain item details from item database"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"itemId\": 1657,\n  \"name\": \"Smart WiFi Router\",\n  \"price\": 2096,\n  \"description\": \"Wifi router/wireless router. One of routers for wireless internet, wireless routers for home. Dual band router and gigabit router. Ideal as internet router also gaming router. Long range coverage with high speed. Compatible with all 802.11ac devices and below. 5ghz router/5g router Frequency Range: 2.4GHz and 5GHz; Interface Available: 4 x 10/100/1000Mbps LAN Ports, 1 10/100/1000Mbps WAN Port, 1 USB 2.0 Ports; Protocols Supported: Supports IPv4 and IPv6; System Requirement: Microsoft Windows 98SE NT 2000 XP Vista, or Windows 7 Windows 8/8.1/10, MAC OS NetWare UNIX or Linux; Wireless Standards: IEEE 802.11ac/n/a 5GHz, IEEE 802.11b/g/n 2.4GH\"\n}"
+								},
+								{
+									"id": "68179262-b9b5-4cec-a3bb-ffebfe249aa3",
+									"name": "Bad Request - Invalid item ID supplied",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/items/:itemId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"items",
+												":itemId"
+											],
+											"variable": [
+												{
+													"key": "itemId",
+													"value": "1657",
+													"description": "(Required) Id of the item to pull details of"
+												}
+											]
+										},
+										"description": "Obtain item details from item database"
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"error\": {\n    \"message\": \"Provided Id is invalid\"\n  }\n}"
+								},
+								{
+									"id": "a11495c8-5846-4799-b44f-b876be8b4edf",
+									"name": "Not Found - Item not found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/items/:itemId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"items",
+												":itemId"
+											],
+											"variable": [
+												{
+													"key": "itemId",
+													"value": "1657",
+													"description": "(Required) Id of the item to pull details of"
+												}
+											]
+										},
+										"description": "Obtain item details from item database"
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"error\": {\n    \"message\": \"The item you are looking for, does not exist\"\n  }\n}"
+								}
+							]
+						},
+						{
+							"name": "Add item to cart",
+							"id": "4a4e2f29-25ee-4beb-adf7-4eacc4a84b28",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/items/:itemId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"items",
+										":itemId"
+									],
+									"variable": [
+										{
+											"key": "itemId",
+											"value": "1657",
+											"description": "(Required) Id of the item to pull details of"
+										}
+									]
+								},
+								"description": "add items to cart"
+							},
+							"response": [
+								{
+									"id": "8c4d113a-a385-4c09-ae05-d124a4e737e9",
+									"name": "OK - Successfully added order to cart",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/items/:itemId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"items",
+												":itemId"
+											],
+											"variable": [
+												{
+													"key": "itemId",
+													"value": "1657",
+													"description": "(Required) Id of the item to pull details of"
+												}
+											]
+										},
+										"description": "add items to cart"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"itemId\": 1657,\n  \"name\": \"Smart WiFi Router\",\n  \"price\": 2096,\n  \"description\": \"Wifi router/wireless router. One of routers for wireless internet, wireless routers for home. Dual band router and gigabit router. Ideal as internet router also gaming router. Long range coverage with high speed. Compatible with all 802.11ac devices and below. 5ghz router/5g router Frequency Range: 2.4GHz and 5GHz; Interface Available: 4 x 10/100/1000Mbps LAN Ports, 1 10/100/1000Mbps WAN Port, 1 USB 2.0 Ports; Protocols Supported: Supports IPv4 and IPv6; System Requirement: Microsoft Windows 98SE NT 2000 XP Vista, or Windows 7 Windows 8/8.1/10, MAC OS NetWare UNIX or Linux; Wireless Standards: IEEE 802.11ac/n/a 5GHz, IEEE 802.11b/g/n 2.4GH\",\n  \"quantitiy\": 1\n}"
+								},
+								{
+									"id": "1d41531a-747f-428c-b1cd-90b2549de99f",
+									"name": "Bad Request - Invalid item ID supplied",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/items/:itemId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"items",
+												":itemId"
+											],
+											"variable": [
+												{
+													"key": "itemId",
+													"value": "1657",
+													"description": "(Required) Id of the item to pull details of"
+												}
+											]
+										},
+										"description": "add items to cart"
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"error\": {\n    \"message\": \"Provided Id is invalid\"\n  }\n}"
+								},
+								{
+									"id": "b158acec-5d96-47d0-87fa-58d90f211de0",
+									"name": "Not Found - Item not found",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/items/:itemId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"items",
+												":itemId"
+											],
+											"variable": [
+												{
+													"key": "itemId",
+													"value": "1657",
+													"description": "(Required) Id of the item to pull details of"
+												}
+											]
+										},
+										"description": "add items to cart"
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"error\": {\n    \"message\": \"The item you are looking for, does not exist\"\n  }\n}"
+								}
+							]
+						}
+					],
+					"id": "4aded853-0b3c-4dd5-9399-df39bd0aac9e"
+				},
+				{
+					"name": "Get items from the database",
+					"id": "7f725635-0664-461e-86bf-4e02e6c89cc7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/items?list=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"items"
+							],
+							"query": [
+								{
+									"key": "list",
+									"value": "10",
+									"description": "Number of items to be displayed"
+								}
+							]
+						},
+						"description": "Pull a list of items from item database"
+					},
+					"response": [
+						{
+							"id": "59225cbb-204e-4bec-ac2d-da762c195201",
+							"name": "OK - Successful pull of items",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/items?list=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"items"
+									],
+									"query": [
+										{
+											"key": "list",
+											"value": "10",
+											"description": "Number of items to be displayed"
+										}
+									]
+								},
+								"description": "Pull a list of items from item database"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"itemId\": 1657,\n    \"name\": \"Smart WiFi Router\",\n    \"price\": 2096,\n    \"description\": \"Wifi router/wireless router. One of routers for wireless internet, wireless routers for home. Dual band router and gigabit router. Ideal as internet router also gaming router. Long range coverage with high speed. Compatible with all 802.11ac devices and below. 5ghz router/5g router Frequency Range: 2.4GHz and 5GHz; Interface Available: 4 x 10/100/1000Mbps LAN Ports, 1 10/100/1000Mbps WAN Port, 1 USB 2.0 Ports; Protocols Supported: Supports IPv4 and IPv6; System Requirement: Microsoft Windows 98SE NT 2000 XP Vista, or Windows 7 Windows 8/8.1/10, MAC OS NetWare UNIX or Linux; Wireless Standards: IEEE 802.11ac/n/a 5GHz, IEEE 802.11b/g/n 2.4GH\"\n  },\n  {\n    \"itemId\": 1658,\n    \"name\": \"VR Gaming Headset\",\n    \"price\": 79990,\n    \"description\": \"VR Gaming Headset puts you at the center of virtual reality's most pulse-pounding, PC-powered gameplay. See the action unfold all around you through our sharpest lenses and next-generation optics. Lose yourself in the experience with a comfortable, improved design that lets you start playing faster and keep playing longer. Insight tracking gives you the power to move throughout your playspace in any direction. No external sensors. No complicated setup. Just hands-on action and interaction with our updated Oculus Touch controllers right out of the box. Step into the game and the future of PC VR.\"\n  },\n  {\n    \"itemId\": 1659,\n    \"name\": \"Classic Loop Top Shaker Bottle, 20-Ounce\",\n    \"price\": 578,\n    \"description\": \"Easy to maintain proper nutrition and hydration on-the-go.The wide mouth makes it easy to add scoops of powdered mixes, meal ingredients, and liquids, and embossed markings show both ounces and milliliters for easy measuring anywhere (note that markings on the 20-ounce capacity shaker cup only go up to 12 ounces). Bottle contents and liquids are securely contained thanks to a tightly threaded screw-on lid that creates a leakproof seal, and a flip cap that snaps securely shut for shaking and transportation.\"\n  },\n  {\n    \"itemId\": 1660,\n    \"name\": \"4-Port USB 2.0 Hub\",\n    \"price\": 505,\n    \"description\": \"Easily add up to 4 devices with the USB 2.0 Hub. Particularly great for recent notebooks that provide a limited number of USB ports. Achieve full 480 Mbps on each port, or daisy-chain multiple hubs to a maximum of 127 devices.Fully backwards compatible with the USB 1.1 products.\"\n  },\n  {\n    \"itemId\": 1661,\n    \"name\": \"Wipes Flushable Wet Wipes Dispenser, Mint Chill, 48 Count (Pack of 3)\",\n    \"price\": 938,\n    \"description\": \"For a superior clean that’s fresh, gentle, and effective, choose Wipes with the CleaningRipples Texture. Wipes are 100 percent flushable, remove odor causing bacteria and offer a large, dual layer wipe to clean better than when using dry toilet paper alone.\"\n  },\n  {\n    \"itemId\": 1662,\n    \"name\": \"Cordless Vacuum Cleaner\",\n    \"price\": 41893,\n    \"description\": \"Twice the suction of any cord-free vacuum. Cord-free cleaning, made easier. Intelligently optimizes suction and run time, to deep clean everywhere. With fade-free battery power and a battery-saving trigger. And real-time reporting on the LCD screen to give you control of your clean. The Dynamic Load Sensor (DLS) system automatically changes the motor speed between carpets and hard floors. For deep cleaning across floor types.\"\n  },\n  {\n    \"itemId\": 1663,\n    \"name\": \"Hair Dryer\",\n    \"price\": 1400,\n    \"description\": \"Hair dryer is engineered to protect hair from extreme heat damage, with the fastest drying+ and controlled styling to help increase smoothness by 75%, increase shine by up to 132% and decrease frizz and flyaways by up to 61%.\"\n  },\n  {\n    \"itemId\": 1664,\n    \"name\": \"Business Z27n G2 27 inch LED LCD Monitor\",\n    \"price\": 24485,\n    \"description\": \"Be a productive powerhouse with the sleek QHD HP Z27n G2 27-inch Display. This virtually seamless display is factory-tested for reliability and longevity with integrated color calibration, uninterrupted multi-screen tiling, and expansive device connections, including USB-C™. Multi-screen productivity with no disruptions Streamline multi-tasking on multiple displays with a 3-sided micro-edge bezel, and daisy chain up to 2 displays per workstation with DisplayPort™.\"\n  },\n  {\n    \"itemId\": 1665,\n    \"name\": \"Smart Watch\",\n    \"price\": 1805,\n    \"description\": \"Built-in Multi-Sports Mode, record your Running, Cycling, Football, Swimming, Table Tennis, Badminton, Climbing, recording your daily sports data.\"\n  },\n  {\n    \"itemId\": 1666,\n    \"name\": \"Learning Thermostat, 3rd Gen, Smart Thermostat\",\n    \"price\": 15746,\n    \"description\": \"Learning Thermostat is a smart thermostat that learns what temperatures you like, turns itself down when you’re away and connects to your phone. It has a big, sharp display. And it’s proven to help save energy. In independent studies, the Thermostat saved an average of 10% to 12% on heating bills and 15% on cooling bills.\"\n  },\n  {\n    \"itemId\": 16247,\n    \"name\": \"Postman Merch\",\n    \"price\": 15,\n    \"description\": \"Official T-shirt for the Postman community.\"\n  }\n]"
+						}
+					]
+				}
+			],
+			"id": "299520c6-c469-4978-b823-f9d9e3283859"
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "Get orders from the database ",
+					"id": "44ed2f19-3227-441f-a735-1933f58f022c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/orders?list=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							],
+							"query": [
+								{
+									"key": "list",
+									"value": "10",
+									"description": "Number of orders to show"
+								}
+							]
+						},
+						"description": "Obtain order details from orders database"
+					},
+					"response": [
+						{
+							"id": "16c4496e-ec9a-4a45-b28b-e705becca18f",
+							"name": "OK - Successful pull of orders",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/orders?list=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "list",
+											"value": "10",
+											"description": "Number of orders to show"
+										}
+									]
+								},
+								"description": "Obtain order details from orders database"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"orderId\": 674,\n    \"items\": [\n      {\n        \"itemId\": 1657,\n        \"name\": \"Smart WiFi Router\",\n        \"price\": 2096,\n        \"description\": \"Wifi router/wireless router. One of routers for wireless internet, wireless routers for home. Dual band router and gigabit router. Ideal as internet router also gaming router. Long range coverage with high speed. Compatible with all 802.11ac devices and below. 5ghz router/5g router Frequency Range: 2.4GHz and 5GHz; Interface Available: 4 x 10/100/1000Mbps LAN Ports, 1 10/100/1000Mbps WAN Port, 1 USB 2.0 Ports; Protocols Supported: Supports IPv4 and IPv6; System Requirement: Microsoft Windows 98SE NT 2000 XP Vista, or Windows 7 Windows 8/8.1/10, MAC OS NetWare UNIX or Linux; Wireless Standards: IEEE 802.11ac/n/a 5GHz, IEEE 802.11b/g/n 2.4GH\"\n      }\n    ],\n    \"arrivalDate\": \"2020-03-03T13:07:45.962Z\",\n    \"orderDate\": \"2020-03-01T19:27:26.733Z\",\n    \"orderTotal\": 2096,\n    \"address\": \"95 Tarkiln Hill St.Laurel, MD 20707\"\n  },\n  {\n    \"orderId\": 675,\n    \"items\": [\n      {\n        \"itemId\": 1658,\n        \"name\": \"VR Gaming Headset\",\n        \"price\": 79990,\n        \"description\": \"VR Gaming Headset puts you at the center of virtual reality's most pulse-pounding, PC-powered gameplay. See the action unfold all around you through our sharpest lenses and next-generation optics. Lose yourself in the experience with a comfortable, improved design that lets you start playing faster and keep playing longer. Insight tracking gives you the power to move throughout your playspace in any direction. No external sensors. No complicated setup. Just hands-on action and interaction with our updated Oculus Touch controllers right out of the box. Step into the game and the future of PC VR.\"\n      }\n    ],\n    \"arrivalDate\": \"2020-03-03T15:00:56.787Z\",\n    \"orderDate\": \"2020-03-02T21:25:22.096Z\",\n    \"orderTotal\": 79990,\n    \"address\": \"7405 Arcadia St.Rockville, MD 20850\"\n  },\n  {\n    \"orderId\": 676,\n    \"items\": [\n      {\n        \"itemId\": 1665,\n        \"name\": \"Smart Watch\",\n        \"price\": 1805,\n        \"description\": \"Built-in Multi-Sports Mode, record your Running, Cycling, Football, Swimming, Table Tennis, Badminton, Climbing, recording your daily sports data.\"\n      }\n    ],\n    \"arrivalDate\": \"2020-03-05T17:30:15.156Z\",\n    \"orderDate\": \"2020-03-03T01:10:27.512Z\",\n    \"orderTotal\": 1805,\n    \"address\": \"9791 Lawrence Dr.Marlton, NJ 08053r\"\n  },\n  {\n    \"orderId\": 677,\n    \"items\": [\n      {\n        \"itemId\": 1659,\n        \"name\": \"Classic Loop Top Shaker Bottle, 20-Ounce\",\n        \"price\": 578,\n        \"description\": \"Easy to maintain proper nutrition and hydration on-the-go.The wide mouth makes it easy to add scoops of powdered mixes, meal ingredients, and liquids, and embossed markings show both ounces and milliliters for easy measuring anywhere (note that markings on the 20-ounce capacity shaker cup only go up to 12 ounces). Bottle contents and liquids are securely contained thanks to a tightly threaded screw-on lid that creates a leakproof seal, and a flip cap that snaps securely shut for shaking and transportation.\"\n      }\n    ],\n    \"arrivalDate\": \"2020-03-03T18:16:24.911Z\",\n    \"orderDate\": \"2020-03-01T06:09:23.007Z\",\n    \"orderTotal\": 578,\n    \"address\": \"822 Clay St.Tampa, FL 33604\"\n  },\n  {\n    \"orderId\": 678,\n    \"items\": [\n      {\n        \"itemId\": 1663,\n        \"name\": \"Hair Dryer\",\n        \"price\": 1400,\n        \"description\": \"Hair dryer is engineered to protect hair from extreme heat damage, with the fastest drying+ and controlled styling to help increase smoothness by 75%, increase shine by up to 132% and decrease frizz and flyaways by up to 61%.\"\n      }\n    ],\n    \"arrivalDate\": \"2020-03-04T12:09:07.955Z\",\n    \"orderDate\": \"2020-03-02T21:50:44.173Z\",\n    \"orderTotal\": 1400,\n    \"address\": \"7444 SW. State Ave.Philadelphia, PA 19111\"\n  },\n  {\n    \"orderId\": 679,\n    \"items\": [\n      {\n        \"itemId\": 1660,\n        \"name\": \"4-Port USB 2.0 Hub\",\n        \"price\": 505,\n        \"description\": \"Easily add up to 4 devices with the USB 2.0 Hub. Particularly great for recent notebooks that provide a limited number of USB ports. Achieve full 480 Mbps on each port, or daisy-chain multiple hubs to a maximum of 127 devices.Fully backwards compatible with the USB 1.1 products.\"\n      }\n    ],\n    \"arrivalDate\": \"2020-03-04T11:29:56.99Z\",\n    \"orderDate\": \"2020-03-03T00:51:26.19Z\",\n    \"orderTotal\": 505,\n    \"address\": \"307 Purple Finch Ave.New Lenox, IL 60451\"\n  },\n  {\n    \"orderId\": 680,\n    \"items\": [\n      {\n        \"itemId\": 1661,\n        \"name\": \"Wipes Flushable Wet Wipes Dispenser, Mint Chill, 48 Count (Pack of 3)\",\n        \"price\": 938,\n        \"description\": \"For a superior clean that’s fresh, gentle, and effective, choose Wipes with the CleaningRipples Texture. Wipes are 100 percent flushable, remove odor causing bacteria and offer a large, dual layer wipe to clean better than when using dry toilet paper alone.\"\n      }\n    ],\n    \"arrivalDate\": \"2020-03-04T02:06:58.886Z\",\n    \"orderDate\": \"2020-03-02T04:33:52.652Z\",\n    \"orderTotal\": 938,\n    \"address\": \"946 Holly StreetHamilton, OH 45011\"\n  },\n  {\n    \"orderId\": 681,\n    \"items\": [\n      {\n        \"itemId\": 1663,\n        \"name\": \"Hair Dryer\",\n        \"price\": 1400,\n        \"description\": \"Hair dryer is engineered to protect hair from extreme heat damage, with the fastest drying+ and controlled styling to help increase smoothness by 75%, increase shine by up to 132% and decrease frizz and flyaways by up to 61%.\"\n      }\n    ],\n    \"arrivalDate\": \"2020-03-04T17:26:07.706Z\",\n    \"orderDate\": \"2020-03-02T04:17:23.689Z\",\n    \"orderTotal\": 1400,\n    \"address\": \"8924 East Birchwood St.Hamburg, NY 14075\"\n  },\n  {\n    \"orderId\": 682,\n    \"items\": [\n      {\n        \"itemId\": 1665,\n        \"name\": \"Smart Watch\",\n        \"price\": 1805,\n        \"description\": \"Built-in Multi-Sports Mode, record your Running, Cycling, Football, Swimming, Table Tennis, Badminton, Climbing, recording your daily sports data.\"\n      }\n    ],\n    \"arrivalDate\": \"2020-03-05T14:07:01.688Z\",\n    \"orderDate\": \"2020-03-03T04:58:18.504Z\",\n    \"orderTotal\": 1805,\n    \"address\": \"10 Wilson LaneBay City, MI 48706\"\n  },\n  {\n    \"orderId\": 683,\n    \"items\": [\n      {\n        \"itemId\": 1666,\n        \"name\": \"Learning Thermostat, 3rd Gen, Smart Thermostat\",\n        \"price\": 15746,\n        \"description\": \"Learning Thermostat is a smart thermostat that learns what temperatures you like, turns itself down when you’re away and connects to your phone. It has a big, sharp display. And it’s proven to help save energy. In independent studies, the Thermostat saved an average of 10% to 12% on heating bills and 15% on cooling bills.\"\n      }\n    ],\n    \"arrivalDate\": \"2020-03-05T10:43:23.713Z\",\n    \"orderDate\": \"2020-03-03T08:34:21.21Z\",\n    \"orderTotal\": 15746,\n    \"address\": \"m81 West Shirley Dr.Greenfield, IN 46140\"\n  },\n  {\n    \"orderId\": 656,\n    \"items\": [\n      {\n        \"itemId\": 16247,\n        \"name\": \"Postman Merch\",\n        \"price\": 15,\n        \"description\": \"Official T-shirt for the Postman community.\"\n      }\n    ],\n    \"arrivalDate\": \"2020-3-04T13:07:45.962Z\",\n    \"orderDate\": \"2020-03-06T19:27:26.733Z\",\n    \"orderTotal\": 15,\n    \"address\": \"SimpleKart HQ, 221B Baker street\"\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "Post order details to the database",
+					"id": "accfa636-bc1f-4284-a150-bd1ec5d4e96a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"address\": \"<string>\",\n  \"item\": {\n    \"itemId\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"price\": \"<integer>\",\n    \"description\": \"<string>\",\n    \"quantitiy\": \"<integer>\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						},
+						"description": "Post item order to orders database"
+					},
+					"response": [
+						{
+							"id": "da928883-c47c-4285-a8a5-d5f9b2f6c191",
+							"name": "OK - Order created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"address\": \"<string>\",\n  \"item\": {\n    \"itemId\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"price\": \"<integer>\",\n    \"description\": \"<string>\",\n    \"quantitiy\": \"<integer>\"\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									]
+								},
+								"description": "Post item order to orders database"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"orderId\": 674,\n  \"items\": [\n    {\n      \"itemId\": 1657,\n      \"name\": \"Smart WiFi Router\",\n      \"price\": 2096,\n      \"description\": \"Wifi router/wireless router. One of routers for wireless internet, wireless routers for home. Dual band router and gigabit router. Ideal as internet router also gaming router. Long range coverage with high speed. Compatible with all 802.11ac devices and below. 5ghz router/5g router Frequency Range: 2.4GHz and 5GHz; Interface Available: 4 x 10/100/1000Mbps LAN Ports, 1 10/100/1000Mbps WAN Port, 1 USB 2.0 Ports; Protocols Supported: Supports IPv4 and IPv6; System Requirement: Microsoft Windows 98SE NT 2000 XP Vista, or Windows 7 Windows 8/8.1/10, MAC OS NetWare UNIX or Linux; Wireless Standards: IEEE 802.11ac/n/a 5GHz, IEEE 802.11b/g/n 2.4GH\"\n    }\n  ],\n  \"arrivalDate\": \"2020-3-04T13:07:45.962Z\",\n  \"orderDate\": \"2020-03-06T19:27:26.733Z\",\n  \"orderTotal\": 2096,\n  \"address\": \"95 Tarkiln Hill St.Laurel, MD 20707\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get order details from database",
+					"id": "35eedb71-70cb-40ff-a665-cae6fa9ed749",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/orders/:orderId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								":orderId"
+							],
+							"variable": [
+								{
+									"key": "orderId",
+									"value": "674",
+									"description": "(Required) "
+								}
+							]
+						},
+						"description": "Obtain item details from the database"
+					},
+					"response": [
+						{
+							"id": "a244fcac-a1e1-40dd-9af7-1bd7c3998849",
+							"name": "OK - Successfully obtained order details",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/orders/:orderId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										":orderId"
+									],
+									"variable": [
+										{
+											"key": "orderId",
+											"value": "674",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Obtain item details from the database"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"orderId\": 674,\n  \"items\": [\n    {\n      \"itemId\": 1657,\n      \"name\": \"Smart WiFi Router\",\n      \"price\": 2096,\n      \"description\": \"Wifi router/wireless router. One of routers for wireless internet, wireless routers for home. Dual band router and gigabit router. Ideal as internet router also gaming router. Long range coverage with high speed. Compatible with all 802.11ac devices and below. 5ghz router/5g router Frequency Range: 2.4GHz and 5GHz; Interface Available: 4 x 10/100/1000Mbps LAN Ports, 1 10/100/1000Mbps WAN Port, 1 USB 2.0 Ports; Protocols Supported: Supports IPv4 and IPv6; System Requirement: Microsoft Windows 98SE NT 2000 XP Vista, or Windows 7 Windows 8/8.1/10, MAC OS NetWare UNIX or Linux; Wireless Standards: IEEE 802.11ac/n/a 5GHz, IEEE 802.11b/g/n 2.4GH\"\n    }\n  ],\n  \"arrivalDate\": \"2020-3-04T13:07:45.962Z\",\n  \"orderDate\": \"2020-03-06T19:27:26.733Z\",\n  \"orderTotal\": 2096,\n  \"address\": \"95 Tarkiln Hill St.Laurel, MD 20707\"\n}"
+						},
+						{
+							"id": "78b9e434-dd23-4093-95de-2cb211a216da",
+							"name": "Bad Request - Invalid order ID supplied",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/orders/:orderId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										":orderId"
+									],
+									"variable": [
+										{
+											"key": "orderId",
+											"value": "674",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Obtain item details from the database"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"error\": {\n    \"message\": \"Provided Id is invalid\"\n  }\n}"
+						},
+						{
+							"id": "2d1ebf4d-84fb-4e56-a48a-4e8a28f33873",
+							"name": "Not Found - Order not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/orders/:orderId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										":orderId"
+									],
+									"variable": [
+										{
+											"key": "orderId",
+											"value": "674",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Obtain item details from the database"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"error\": {\n    \"message\": \"The order you are looking for, does not exist\"\n  }\n}"
+						}
+					]
+				}
+			],
+			"id": "5fc97c67-04a0-42be-9dec-4661f3fb9e2d"
+		}
+	],
+	"variable": [
+		{
+			"id": "2ee986da-689b-4b9b-b1df-d5597601a119",
+			"key": "baseUrl",
+			"value": "https://api.simplekart.com",
+			"type": "string"
+		}
+	]
+}

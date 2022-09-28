@@ -1,0 +1,16 @@
+id = b1a25be9-1972-4e84-af10-34500a1eaabd
+
+[relations]
+
+[relations.collections]
+rootDirectory = postman/collections
+files[] = {"id":"17891466-b2b92b36-b123-4481-b807-9bbefbc0cae4","path":"SimpleKart E-commerce API Testing Demo.json","metaData":{}}
+
+[relations.collections.metaData]
+
+[relations.apiDefinition]
+rootDirectory = postman/schemas
+files[] = {"path":"openapi.json","metaData":{}}
+
+[relations.apiDefinition.metaData]
+type = openapi:3
